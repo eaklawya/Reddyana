@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REDDYANA · Withdrawal</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: #f4f7fc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    .panel {
+      max-width: 1100px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 2.5rem 2.5rem 2rem 2rem;
+      box-shadow: 0 25px 50px -10px rgba(0, 20, 30, 0.15);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    /* header */
+    .brand-header {
+      background: #0b2b3c;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand i {
+      font-size: 2.2rem;
+      color: #f5b042;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .brand h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to right, #f8d48c, #f5b042);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .brand span {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: #a0c0d0;
+      margin-left: 0.3rem;
+      -webkit-text-fill-color: #a0c0d0;
+    }
+
+    .work-badge {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1.4rem;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 215, 120, 0.25);
+      color: #f5dba8;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .work-badge i {
+      color: #f5b042;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #f5b042;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 215, 120, 0.15);
+      transition: 0.15s;
+    }
+
+    .back-link:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* withdrawal content */
+    .withdrawal-content {
+      padding: 2.5rem 2.5rem 3rem;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .withdrawal-form-section h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #0b2b3c;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .withdrawal-form-section h2 i {
+      color: #f5b042;
+    }
+
+    .withdrawal-form-section .sub {
+      color: #5a7a8c;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.6rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #1f4052;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.2px;
+    }
+
+    .form-group label i {
+      color: #f5b042;
+      margin-right: 0.4rem;
+    }
+
+    .input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #f6f9fc;
+      border-radius: 1.2rem;
+      border: 2px solid #e9eef4;
+      transition: 0.15s;
+    }
+
+    .input-wrap:focus-within {
+      border-color: #f5b042;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(245, 176, 66, 0.1);
+    }
+
+    .input-wrap .currency-symbol {
+      padding: 0 0 0 1.2rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #0b2b3c;
+      opacity: 0.6;
+    }
+
+    .input-wrap input,
+    .input-wrap select {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border: none;
+      background: transparent;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #0b2b3c;
+      outline: none;
+    }
+
+    .input-wrap input::placeholder {
+      color: #b0c8d6;
+      font-weight: 400;
+    }
+
+    .input-wrap select {
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .input-wrap .icon-right {
+      padding-right: 1.2rem;
+      color: #8aaaba;
+    }
+
+    /* methods grid */
+    .methods-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 0.2rem;
+    }
+
+    .method-option {
+      background: #f6f9fc;
+      border: 2px solid #e9eef4;
+      border-radius: 1.2rem;
+      padding: 1rem 0.8rem;
+      text-align: center;
+      cursor: default;
+      transition: 0.15s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .method-option i {
+      font-size: 1.6rem;
+      color: #5a7a8c;
+    }
+
+    .method-option span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #1f4052;
+    }
+
+    .method-option.active {
+      border-color: #f5b042;
+      background: #fef9ed;
+      box-shadow: 0 2px 8px rgba(245, 176, 66, 0.12);
+    }
+
+    .method-option.active i {
+      color: #f5b042;
+    }
+
+    .method-option .check {
+      display: none;
+      color: #f5b042;
+      font-size: 0.8rem;
+    }
+
+    .method-option.active .check {
+      display: inline;
+    }
+
+    .note-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #f0f6fb;
+      padding: 0.8rem 1.2rem;
+      border-radius: 1rem;
+      color: #1f4052;
+      font-size: 0.85rem;
+      margin: 0.5rem 0 1.2rem;
+    }
+
+    .note-row i {
+      color: #f5b042;
+    }
+
+    .withdraw-btn {
+      width: 100%;
+      background: #0b2b3c;
+      border: none;
+      padding: 1.1rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      cursor: default;
+      transition: 0.15s;
+      box-shadow: 0 8px 18px -6px rgba(11, 43, 60, 0.25);
+    }
+
+    .withdraw-btn i {
+      color: #f5b042;
+    }
+
+    .withdraw-btn:hover {
+      transform: scale(0.98);
+      box-shadow: 0 4px 12px -4px rgba(11, 43, 60, 0.3);
+    }
+
+    /* summary */
+    .summary-section {
+      background: #f9fbfd;
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      border: 1px solid #edf2f7;
+      align-self: start;
+    }
+
+    .summary-section h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0b2b3c;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .summary-section h3 i {
+      color: #f5b042;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #e6edf4;
+    }
+
+    .summary-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .summary-row .label {
+      color: #3b5f72;
+      font-size: 0.9rem;
+    }
+
+    .summary-row .value {
+      font-weight: 600;
+      color: #0b2b3c;
+    }
+
+    .summary-row .value.highlight {
+      color: #c0392b;
+      font-size: 1.2rem;
+    }
+
+    .summary-total {
+      background: #0b2b3c;
+      border-radius: 1.4rem;
+      padding: 1.2rem 1.5rem;
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .summary-total .label {
+      opacity: 0.7;
+      font-size: 0.85rem;
+    }
+
+    .summary-total .amount {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .summary-total .amount small {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.6;
+    }
+
+    .recent-withdrawals {
+      margin-top: 1.8rem;
+    }
+
+    .recent-withdrawals h4 {
+      font-size: 0.85rem;
+      color: #3b5f72;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .recent-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #eef3f8;
+      font-size: 0.85rem;
+    }
+
+    .recent-item:last-child {
+      border-bottom: none;
+    }
+
+    .recent-item .desc {
+      color: #1f4052;
+    }
+
+    .recent-item .amt {
+      font-weight: 600;
+      color: #b13e3e;
+    }
+
+    .recent-item .date {
+      color: #8aaaba;
+      font-size: 0.7rem;
+    }
+
+    /* responsive */
+    @media (max-width: 850px) {
+      .withdrawal-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.8rem;
+      }
+      .brand-header {
+        padding: 1.2rem 1.8rem;
+      }
+      .methods-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .brand h1 {
+        font-size: 1.6rem;
+      }
+      .work-badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 1rem;
+      }
+      .withdrawal-content {
+        padding: 1.2rem;
+      }
+      .methods-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+      .summary-total {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+      .withdrawal-form-section h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="panel">
+
+    <!-- header -->
+    <header class="brand-header">
+      <div class="brand">
+        <i class="fas fa-piggy-bank"></i>
+        <h1>REDDYANA <span>· withdrawal</span></h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="#" class="back-link" onclick="history.back(); return false;">
+          <i class="fas fa-arrow-left"></i> Back to panel
+        </a>
+        <div class="work-badge">
+          <i class="fas fa-briefcase"></i>
+          <span>Active · 9:41 AM</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- withdrawal content -->
+    <div class="withdrawal-content">
+
+      <!-- left: withdrawal form -->
+      <div class="withdrawal-form-section">
+        <h2><i class="fas fa-circle-dollar"></i> Withdraw funds</h2>
+        <p class="sub">Move money out of your account securely</p>
+
+        <!-- amount -->
+        <div class="form-group">
+          <label><i class="fas fa-dollar-sign"></i> Withdrawal amount</label>
+          <div class="input-wrap">
+            <span class="currency-symbol">$</span>
+            <input type="text" placeholder="0.00" value="450.00" />
+            <span class="icon-right"><i class="fas fa-chevron-down" style="opacity:0.3;"></i></span>
+          </div>
+        </div>
+
+        <!-- withdrawal method -->
+        <div class="form-group">
+          <label><i class="fas fa-credit-card"></i> Withdrawal method</label>
+          <div class="methods-grid">
+            <div class="method-option active">
+              <i class="fas fa-building-columns"></i>
+              <span>Bank transfer</span>
+              <span class="check"><i class="fas fa-check-circle"></i></span>
+            </div>
+            <div class="method-option">
+              <i class="fas fa-credit-card"></i>
+              <span>Debit card</span>
+              <span class="check"><i class="fas fa-check-circle"></i></span>
+            </div>
+            <div class="method-option">
+              <i class="fas fa-mobile-screen-button"></i>
+              <span>Mobile pay</span>
+              <span class="check"><i class="fas fa-check-circle"></i></span>
+            </div>
+            <div class="method-option">
+              <i class="fas fa-wallet"></i>
+              <span>Digital wallet</span>
+              <span class="check"><i class="fas fa-check-circle"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- destination account -->
+        <div class="form-group">
+          <label><i class="fas fa-arrow-right-arrow-left"></i> To</label>
+          <div class="input-wrap">
+            <select>
+              <option>External bank · ****3391</option>
+              <option>Savings account · ****8842</option>
+              <option>Business account · ****2217</option>
+            </select>
+            <span class="icon-right"><i class="fas fa-chevron-down" style="opacity:0.3;"></i></span>
+          </div>
+        </div>
+
+        <!-- note -->
+        <div class="note-row">
+          <i class="fas fa-clock"></i>
+          <span>Withdrawals may take 1–3 business days. Instant options available.</span>
+        </div>
+
+        <!-- withdrawal button -->
+        <button class="withdraw-btn">
+          <i class="fas fa-arrow-right"></i> Confirm withdrawal
+        </button>
+      </div>
+
+      <!-- right: summary -->
+      <div class="summary-section">
+        <h3><i class="fas fa-receipt"></i> Withdrawal summary</h3>
+
+        <div class="summary-row">
+          <span class="label">Amount</span>
+          <span class="value highlight">$450.00</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Method</span>
+          <span class="value">Bank transfer</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">To account</span>
+          <span class="value">External · ****3391</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Fee</span>
+          <span class="value" style="color: #b13e3e;">$2.50</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">Estimated arrival</span>
+          <span class="value">Jul 16, 2026</span>
+        </div>
+
+        <div class="summary-total">
+          <span class="label">Remaining balance</span>
+          <span class="amount">$13,830.50 <small>USD</small></span>
+        </div>
+
+        <!-- recent withdrawals -->
+        <div class="recent-withdrawals">
+          <h4><i class="fas fa-clock-rotate-left"></i> Recent withdrawals</h4>
+          <div class="recent-item">
+            <span class="desc">ATM withdrawal</span>
+            <span class="amt">-$200.00</span>
+            <span class="date">Today</span>
+          </div>
+          <div class="recent-item">
+            <span class="desc">Transfer to savings</span>
+            <span class="amt">-$500.00</span>
+            <span class="date">Yesterday</span>
+          </div>
+          <div class="recent-item">
+            <span class="desc">Vendor payment</span>
+            <span class="amt">-$1,200.00</span>
+            <span class="date">Jul 10</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <div style="padding: 0.8rem 2.5rem 1.2rem; border-top: 1px solid #eef4f9; display: flex; justify-content: flex-end; gap: 1.5rem; font-size: 0.75rem; color: #6a8598;">
+      <span><i class="fas fa-sync-alt"></i> Last sync: 2 min ago</span>
+      <span><i class="fas fa-shield-alt"></i> REDDYANA v2.4</span>
+    </div>
+  </div>
+
+</body>
+</html>
